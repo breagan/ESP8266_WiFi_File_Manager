@@ -1,7 +1,7 @@
 # ESP8266_WiFi_File_Manager
 These files allow ESP8266 remote file management and control over WiFi
 
-With these files it is possible to add delete compile and run files on the ESP via a web browser.
+With these files it is possible to add, delete, compile, and run files on the ESP via a web browser.
 
 
 Files in the Lua_files folder (4) should be uploaded to a freshly formated ESP8266 running NodeMCU.
