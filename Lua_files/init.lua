@@ -1,5 +1,6 @@
 wifi.setmode(wifi.STATION)
 wifi.sta.config("SSID","password")   ---   SSID and Password for your LAN DHCP here
+wifi.sta.connect()
   print("System Info:  ")
   print("IP: ")
   print(wifi.sta.getip())
