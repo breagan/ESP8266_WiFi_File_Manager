@@ -22,7 +22,7 @@ echo "</form>";
 echo "<BR>";
 
 echo "<center>";
-echo "<form method='LINK' ACTION='http://".$chipIP."/status'>";   // simple link to target ESP to get status
+echo "<form method='LINK' ACTION='http://".$chipIP."'>";   // simple link to target ESP to get status
 echo "<input type='submit' value='Controller Status'>";
 echo "</form>";
 
