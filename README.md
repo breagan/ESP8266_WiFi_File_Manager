@@ -13,4 +13,8 @@ PHP files should be uploaded to a web server on the common LAN with the ESP.
 
 If you don't have any webserver with PHP available, you can use the docker image _gaetancollaud/esp8266_wifi_manager_
 
-`docker run -d -p 80:80 gaetancollaud/esp8266_wifi_manager`
+`docker run -d -p 80:80 --name esp8266_wifi_manager gaetancollaud/esp8266_wifi_manager`
+
+You can use a volume to use lua file from your host.
+
+`docker run -it -p 82:80 --name esp8266_wifi_manager -v /home/gaetan/myfilebin:/var/www/html/filebin gaetancollaud/esp8266_wifi_manager`
