@@ -1,3 +1,15 @@
+<html>
+<!DOCTYPE HTML PUBLIC '-//W3C//DTD HTML 4.01//EN'>
+<head>
+<title>WiFi ESP8266 Manager</title>
+</head>
+<body bgcolor='#E6E6E6'>
+<h2><center>WiFi ESP8266 Manager</h2>
+<pre><p>
+<table border="0" bgcolor='#f0f0f0' cellpadding = "5" align = "center" width = "500">
+<tr>
+<td>
+
 <?php
 
 
@@ -28,12 +40,13 @@ echo "<center>";
 echo "<form action='add.php' method='post'>";   // writes updated IP
 
 
-echo 'IP<input type = "text" name="IP">';
+echo 'IP <input type = "text" name="IP">';
+echo " ";
+echo 'Name <input type = "text" name="name">';
+echo "<br>";
+echo 'Location <input type = "text" name="loc">';
 
-echo 'Name<input type = "text" name="name">';
-echo 'Location<input type = "text" name="loc">';
-
-echo "<input type='submit' value='Add'>";
+echo "<input type='submit' value='Add '>";
 echo "</form>";
 echo "<BR>";
 $chipdata = file("controllerIP.txt");   // reads IP number for ESP
