@@ -9,7 +9,26 @@
 <table border="0" bgcolor='#f0f0f0' cellpadding = "5" align = "center" width = "500">
 <tr>
 <td>
+<script type="text/javascript">
+  function submitForm(action){
+    var form = document.getElementById('form1');
+    form.action = action;
+    form.method = "post";
+    form.submit();
+  }
+</script>
 
+
+
+<form id="form1">
+  IP <input type = "text" name="IP">
+	
+	Name <input type = "text" name="name">
+	<br>
+	Location <input type = "text" name="loc">
+  <input type="button" onclick="submitForm('add.php')" value="Add" />
+  <input type="button" onclick="submitForm('delete.php')" value="Delete" />
+</form>
 <?php
 
 
@@ -37,17 +56,7 @@ EOF;
    }
 
 echo "<center>";
-echo "<form action='add.php' method='post'>";   // writes updated IP
 
-
-echo 'IP <input type = "text" name="IP">';
-echo " ";
-echo 'Name <input type = "text" name="name">';
-echo "<br>";
-echo 'Location <input type = "text" name="loc">';
-
-echo "<input type='submit' value='Add '>";
-echo "</form>";
 echo "<BR>";
 $chipdata = file("controllerIP.txt");   // reads IP number for ESP
 $chipIP = $chipdata[0];
