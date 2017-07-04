@@ -8,3 +8,7 @@ Files in the Lua_files folder (4) should be uploaded to a freshly formated ESP82
 init.lua should be edited to reflect your LAN SSID and Password settings.
 
 PHP files should be uploaded to a web server on the common LAN with the ESP.
+
+Added a sqlite database to store IP addresses, Name, and Location of each device.
+
+sqlite3 and php-sqlite3 required.

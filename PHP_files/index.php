@@ -9,14 +9,74 @@
 <table border="0" bgcolor='#f0f0f0' cellpadding = "5" align = "center" width = "500">
 <tr>
 <td>
+<script type="text/javascript">
+  function submitForm(action){
+    var form = document.getElementById('form1');
+    form.action = action;
+    form.method = "post";
+    form.submit();
+  }
+</script>
+
+
+
+<form id="form1">
+  IP <input type = "text" name="IP">
+	
+	Name <input type = "text" name="name">
+	<br>
+	Location <input type = "text" name="loc">
+  <input type="button" onclick="submitForm('add.php')" value="Add" />
+  <input type="button" onclick="submitForm('delete.php')" value="Delete" />
+</form>
 <?php
+
+
+
+   class MyDB extends SQLite3
+   {
+      function __construct()
+      {
+         $this->open('ESP8266.db');
+      }
+   }
+   $db = new MyDB();
+   if(!$db){
+      echo $db->lastErrorMsg();
+   } else {
+//      echo "Opened database successfully\n";
+$query = "CREATE TABLE IF NOT EXISTS nodes (IP TEXT, Name TEXT, Location TEXT)"; $db->exec($query);
+         $sql =<<<EOF
+      SELECT * from nodes;
+EOF;
+
+   $ret = $db->query($sql);
+//   echo "Operation done successfully\n";
+
+   }
+
 echo "<center>";
 
+echo "<BR>";
 $chipdata = file("controllerIP.txt");   // reads IP number for ESP
 $chipIP = $chipdata[0];
 $uploadfiles = scandir("./filebin");    // reads the /filebin dir and puts all files in an array.
 echo "<form action='writeIP.php' method='post'>";   // writes updated IP
-echo "Target Controller IP: <input type='text' name='chipIP' value='$chipIP' size='11'>&nbsp;";
+echo "Target Controller IP: ".$chipdata[0]."<br>";
+
+echo '<select name="chipIP">';
+
+echo "<option selected=".$chipIP."value=". $chipIP.">".$chipdata[0] . "</option>";
+while ($row = $ret->fetchArray(SQLITE3_ASSOC)){
+	
+echo "<option value=" . $row['IP'].">" . $row['IP']." " .$row['Name'] . "</option>";
+}
+echo '</select>';
+
+
+
+
+
 echo "<input type='submit' value='Update'>";
 echo "</form>";
 echo "<BR>";
@@ -82,5 +142,6 @@ echo "</table>";
 </tr>
 </table>
 <center> <font color = "#b0b0b0"> Bruce Reagan &copy; 2015
+<center> <font color = "#b0b0b0"> Sqlite additions Jim Meyer &copy; 2017
 
 </html>
